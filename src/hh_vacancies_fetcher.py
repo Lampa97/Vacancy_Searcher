@@ -1,5 +1,5 @@
 import requests
-from src.base_api import BaseVacancyParser
+from src.base_classes import BaseVacancyParser
 
 class HeadHunterAPI(BaseVacancyParser):
     """Class-connector to hh.ru API for getting vacancies by keyword"""
