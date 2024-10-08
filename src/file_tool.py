@@ -31,5 +31,12 @@ class JsonFileTool(BaseFileTool):
             vacancies = json.load(json_file)
             for number in sorted(numbers, reverse=True):
                 vacancies.pop(number)
-        with open (self.path, 'w', encoding='utf-8') as json_file:
+            json_file.seek(0)
             json.dump(vacancies, json_file, indent=4, ensure_ascii=False)
+
+
+file = JsonFileTool('vacancy')
+
+my_l = [{'sg':'dfg'}, {'ffff': 'gdfdfg'}, {'gdfgdfg':'fsdfs'}]
+
+nums =
