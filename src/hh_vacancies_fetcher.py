@@ -3,7 +3,7 @@ from src.base_classes import BaseVacancyParser
 from src.logger import logger_setup
 from src.vacancy import Vacancy
 from src.file_tool import JsonFileTool
-from src.utils import range_vacancies_by_salary, filter_by_description
+from src.utils import range_vacancies_by_salary, filter_by_description, get_top_n_vacancies
 
 api_logger = logger_setup()
 
@@ -80,7 +80,16 @@ ppp = filter_by_description(lll, ['Android', 'Java'])
 for i in ppp:
     print(i.vacancy_info)
 
-ooo = range_vacancies_by_salary(ppp, '80000-120000')
+ooo = range_vacancies_by_salary(ppp, '80000-200000')
+
+fff = sorted(ooo, reverse=True)
+
+ggg = get_top_n_vacancies(fff, 5)
+
+print('----------')
+
+for i in ggg:
+    print(i.vacancy_info)
 
 # for i in lll:
 #     print(i.salary)
