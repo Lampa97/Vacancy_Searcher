@@ -50,7 +50,7 @@ class HeadHunterAPI(BaseVacancyParser):
 
 
 
-#
+
 # my_json = JsonFileTool('filer')
 #
 #
@@ -58,21 +58,21 @@ class HeadHunterAPI(BaseVacancyParser):
 #
 # hh.fetch_vacancies('Java')
 #
-# # print(hh.vacancies)
+# print(hh.vacancies)
 #
 #
 # my = hh.squeeze()
 #
-# # print(my)
+# print(my)
 #
 #
 #
 # for vacancy in my:
 #     new_vac = Vacancy(vacancy)
 #     Vacancy.cast_vacancies_to_list(new_vac)
-#
-# # print(Vacancy.vacancies_list)
-#
+
+# print(Vacancy.vacancies_list)
+
 # lll = Vacancy.vacancies_list
 #
 # ppp = filter_by_description(lll, ['Android', 'Java'])
@@ -80,20 +80,20 @@ class HeadHunterAPI(BaseVacancyParser):
 # for i in ppp:
 #     print(i.vacancy_info)
 #
-# ooo = range_vacancies_by_salary(ppp, '80000-200000')
+# ooo = range_vacancies_by_salary(ppp, '50000-100000')
 #
 # fff = sorted(ooo, reverse=True)
 #
 # ggg = get_top_n_vacancies(fff, 5)
 #
 # print('----------')
-#
+
 # for i in ggg:
 #     print(i.vacancy_info)
 #
 # for i in lll:
 #     print(i.salary)
-#
+
 # for i in ooo:
 #     print(i.salary)
 #
@@ -101,11 +101,11 @@ class HeadHunterAPI(BaseVacancyParser):
 # print(lll[2] >= lll[1])
 # print(lll[2])
 # print(lll[1])
-# #
-# # sss = sorted(lll, reverse=True)
-# #
-# # print(lll[2].vacancy_info)
-# #
-# # ff = JsonFileTool('files')
-# #
-# # ff.save_all_to_file(sss)
+#
+# sss = sorted(lll, reverse=True)
+#
+# print(lll[2].vacancy_info)
+#
+# ff = JsonFileTool('files')
+#
+# ff.save_all_to_file(sss)

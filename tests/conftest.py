@@ -22,3 +22,7 @@ def vacancy_4():
 @pytest.fixture
 def vacancy_5():
     return {'name': 'C++ developer', 'salary': {'from': 300, 'to': 400, 'currency': 'RUR'}, 'url': 'test_url', 'requirement': None}
+
+@pytest.fixture
+def vacancies_list(vacancy_1, vacancy_2, vacancy_3, vacancy_4, vacancy_5):
+    return [Vacancy(vacancy_1), Vacancy(vacancy_2), Vacancy(vacancy_3), Vacancy(vacancy_4), Vacancy(vacancy_5)]
