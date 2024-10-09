@@ -18,7 +18,7 @@ class HeadHunterAPI(BaseVacancyParser):
 
     def fetch_vacancies(self, keyword: str):
         self.__params['text'] = keyword
-        while self.__params['page'] != 20:
+        while self.__params['page'] != 5:
             api_logger.info(f'Parsing page number: {self.__params['page']}')
             response = requests.get(self.__url, headers=self.__headers, params=self.__params)
             if response.status_code == 200:
@@ -49,6 +49,8 @@ class HeadHunterAPI(BaseVacancyParser):
 
 
 
+
+
 hh = HeadHunterAPI()
 
 hh.fetch_vacancies('python')
@@ -64,3 +66,9 @@ for vacancy in my:
     Vacancy.cast_vacancies_to_list(new_vac)
 
 print(Vacancy.vacancies_list)
+
+lll = Vacancy.vacancies_list
+
+print(lll[0] >= lll[1])
+print(lll[0].salary)
+print(lll[1].salary)
