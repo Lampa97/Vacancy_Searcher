@@ -3,6 +3,7 @@ from src.base_classes import BaseVacancyParser
 from src.logger import logger_setup
 from src.vacancy import Vacancy
 from src.file_tool import JsonFileTool
+from src.utils import range_vacancies_by_salary
 
 api_logger = logger_setup()
 
@@ -74,14 +75,22 @@ print(Vacancy.vacancies_list)
 
 lll = Vacancy.vacancies_list
 
-print(lll[2] >= lll[1])
-print(lll[2])
-print(lll[1])
+ooo = range_vacancies_by_salary(lll, '80000-120000')
 
-sss = sorted(lll, reverse=True)
+for i in lll:
+    print(i.salary)
 
-print(lll[2].vacancy_info)
+for i in ooo:
+    print(i.salary)
 
-ff = JsonFileTool('files')
-
-ff.save_all_to_file(sss)
+# print(lll[2] >= lll[1])
+# print(lll[2])
+# print(lll[1])
+#
+# sss = sorted(lll, reverse=True)
+#
+# print(lll[2].vacancy_info)
+#
+# ff = JsonFileTool('files')
+#
+# ff.save_all_to_file(sss)
