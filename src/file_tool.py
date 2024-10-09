@@ -1,5 +1,4 @@
 from src.base_classes import BaseFileTool
-from src.vacancy import Vacancy
 import json
 
 
@@ -7,7 +6,6 @@ class JsonFileTool(BaseFileTool):
     """Class for working with vacancies in json file."""
 
     filename: str
-
 
     def __init__(self, filename):
         """Filename must be given without an extension. Extension '.json' will be added during initialization"""
@@ -19,7 +17,7 @@ class JsonFileTool(BaseFileTool):
         with open(self.path, 'w', encoding='utf-8') as json_file:
             json.dump(vacancy_list, json_file, indent=4, ensure_ascii=False)
 
-    def save_one_to_file(self, vacancy: Vacancy):
+    def save_one_to_file(self, vacancy: dict):
         """Method adding one vacancy to the file"""
         with open(self.path, 'a', encoding='utf-8') as json_file:
             json.dump(vacancy, json_file, indent=4, ensure_ascii=False)
@@ -31,12 +29,5 @@ class JsonFileTool(BaseFileTool):
             vacancies = json.load(json_file)
             for number in sorted(numbers, reverse=True):
                 vacancies.pop(number)
-            json_file.seek(0)
+        with open(self.path, 'w', encoding='utf-8') as json_file:
             json.dump(vacancies, json_file, indent=4, ensure_ascii=False)
-
-
-file = JsonFileTool('vacancy')
-
-my_l = [{'sg':'dfg'}, {'ffff': 'gdfdfg'}, {'gdfgdfg':'fsdfs'}]
-
-nums =

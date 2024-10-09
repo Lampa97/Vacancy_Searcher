@@ -7,6 +7,10 @@ class BaseVacancyParser(ABC):
     def fetch_vacancies(self, keyword):
         pass
 
+    @abstractmethod
+    def squeeze(self):
+        pass
+
 class BaseFileTool(ABC):
     """Abstract class for working with files"""
 
