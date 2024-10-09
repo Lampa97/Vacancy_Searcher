@@ -18,6 +18,14 @@ class Vacancy:
         self.__vacancy_info = vacancy_info
 
     @property
+    def name(self):
+        return self.__name
+
+    @property
+    def url(self):
+        return self.__url
+
+    @property
     def requirement(self):
         return self.__requirement
 
@@ -28,6 +36,9 @@ class Vacancy:
     @property
     def salary(self):
         return self.__salary
+
+    def __len__(self):
+        return len(self.vacancies_list)
 
     def __gt__(self, other):
         if type(self) is type(other):
@@ -45,9 +56,6 @@ class Vacancy:
     def __le__(self, other):
         if type(self) is type(other):
             return self.get_max_salary() <= other.get_max_salary()
-
-    def __len__(self):
-        return len(self.vacancies_list)
 
     def get_max_salary(self):
         """Returning maximum salary from salary range"""
