@@ -3,19 +3,18 @@ class Vacancy:
     vacancy_info: dict
 
     vacancies_list = []
-    vacancy_id = 0
 
     def __init__(self, vacancy_info):
         self.__name = vacancy_info.get('name')
         self.__salary = vacancy_info.get('salary')
         self.__url = vacancy_info.get('url')
         self.__requirement = vacancy_info.get('requirement')
-        self.id = self.vacancy_id
-        self.vacancy_id += 1
         if self.__salary['to'] is None:
             self.__salary['to'] = 0
         if self.__salary['from'] is None:
             self.__salary['from'] = 0
+        self.vacancy_info = vacancy_info
+
 
     @property
     def salary(self):
@@ -42,6 +41,7 @@ class Vacancy:
         return len(self.vacancies_list)
 
     def get_max_salary(self):
+        """Returning maximum salary from salary range"""
         return max(self.salary['from'], self.salary['to'])
 
     @classmethod

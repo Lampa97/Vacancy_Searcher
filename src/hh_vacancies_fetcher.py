@@ -2,6 +2,7 @@ import requests
 from src.base_classes import BaseVacancyParser
 from src.logger import logger_setup
 from src.vacancy import Vacancy
+from src.file_tool import JsonFileTool
 
 api_logger = logger_setup()
 
@@ -37,8 +38,9 @@ class HeadHunterAPI(BaseVacancyParser):
                     current_vacancy = dict()
                     current_vacancy['name'] = vacancy['name']
                     current_vacancy['salary']= vacancy.get('salary')
-                    current_vacancy['url'] = vacancy['url']
+                    current_vacancy['url'] = vacancy['alternate_url']
                     current_vacancy['requirement'] = vacancy['snippet'].get('requirement')
+                    del current_vacancy['salary']['gross']
                     squeezed_info.append(current_vacancy)
             except AttributeError:
                 continue
@@ -48,12 +50,15 @@ class HeadHunterAPI(BaseVacancyParser):
 
 
 
-
+my_json = JsonFileTool('filer')
 
 
 hh = HeadHunterAPI()
 
 hh.fetch_vacancies('python')
+
+print(hh.vacancies)
+
 
 my = hh.squeeze()
 
@@ -70,5 +75,13 @@ print(Vacancy.vacancies_list)
 lll = Vacancy.vacancies_list
 
 print(lll[2] >= lll[1])
-print(lll[2].salary)
-print(lll[1].salary)
+print(lll[2])
+print(lll[1])
+
+sss = sorted(lll, reverse=True)
+
+print(lll[2].vacancy_info)
+
+ff = JsonFileTool('files')
+
+ff.save_all_to_file(sss)
