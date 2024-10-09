@@ -13,8 +13,17 @@ class Vacancy:
             self.__salary['to'] = 0
         if self.__salary['from'] is None:
             self.__salary['from'] = 0
-        self.vacancy_info = vacancy_info
+        if self.__requirement is None:
+            self.__requirement = 'No information'
+        self.__vacancy_info = vacancy_info
 
+    @property
+    def requirement(self):
+        return self.__requirement
+
+    @property
+    def vacancy_info(self):
+        return self.__vacancy_info
 
     @property
     def salary(self):
