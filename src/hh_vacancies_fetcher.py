@@ -1,6 +1,7 @@
 import requests
 from src.base_classes import BaseVacancyParser
 from src.logger import logger_setup
+from src.vacancy import Vacancy
 
 api_logger = logger_setup()
 
@@ -9,22 +10,22 @@ class HeadHunterAPI(BaseVacancyParser):
     """Class-connector to hh.ru API for getting vacancies by keyword"""
 
     def __init__(self):
-        self.url = 'https://api.hh.ru/vacancies'
-        self.headers = {'User-Agent': 'HH-User-Agent'}
-        self.params = {'text': '', 'page': 0, 'per_page': 100}
+        self.__url = 'https://api.hh.ru/vacancies'
+        self.__headers = {'User-Agent': 'HH-User-Agent'}
+        self.__params = {'text': '', 'page': 0, 'per_page': 100}
         self.vacancies = []
 
 
     def fetch_vacancies(self, keyword: str):
-        self.params['text'] = keyword
-        while self.params['page'] != 20:
-            api_logger.info(f'Parsing page number: {self.params['page']}')
-            response = requests.get(self.url, headers=self.headers, params=self.params)
+        self.__params['text'] = keyword
+        while self.__params['page'] != 20:
+            api_logger.info(f'Parsing page number: {self.__params['page']}')
+            response = requests.get(self.__url, headers=self.__headers, params=self.__params)
             if response.status_code == 200:
                 vacancies = response.json()['items']
                 self.vacancies.extend(vacancies)
                 api_logger.info('Vacancies successfully added to list')
-            self.params['page'] += 1
+            self.__params['page'] += 1
 
 
     def squeeze(self) -> list:
@@ -56,3 +57,10 @@ my = hh.squeeze()
 
 print(my)
 
+
+
+for vacancy in my:
+    new_vac = Vacancy(vacancy)
+    Vacancy.cast_vacancies_to_list(new_vac)
+
+print(Vacancy.vacancies_list)

@@ -9,7 +9,7 @@ class JsonFileTool(BaseFileTool):
 
     def __init__(self, filename):
         """Filename must be given without an extension. Extension '.json' will be added during initialization"""
-        self.filename = filename
+        self.__filename = filename
         self.path = f"../data/{self.filename}.json"
 
     def save_all_to_file(self, vacancy_list: list):
