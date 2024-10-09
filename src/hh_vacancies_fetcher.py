@@ -69,6 +69,6 @@ print(Vacancy.vacancies_list)
 
 lll = Vacancy.vacancies_list
 
-print(lll[0] >= lll[1])
-print(lll[0].salary)
+print(lll[2] >= lll[1])
+print(lll[2].salary)
 print(lll[1].salary)

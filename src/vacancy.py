@@ -13,9 +13,9 @@ class Vacancy:
         self.id = self.vacancy_id
         self.vacancy_id += 1
         if self.__salary['to'] is None:
-            self.__salary['to'] = self.__salary['from']
+            self.__salary['to'] = 0
         if self.__salary['from'] is None:
-            self.__salary['from'] = self.__salary['to']
+            self.__salary['from'] = 0
 
     @property
     def salary(self):
@@ -23,22 +23,26 @@ class Vacancy:
 
     def __gt__(self, other):
         if type(self) is type(other):
-            return self.salary['to'] > other.salary['to']
+            return self.get_max_salary() > other.get_max_salary()
 
     def __lt__(self, other):
         if type(self) is type(other):
-            return self.salary['to'] < other.salary['to']
+            return self.get_max_salary() < other.get_max_salary()
+
 
     def __ge__(self, other):
         if type(self) is type(other):
-            return self.salary['to'] >= other.salary['to']
+            return self.get_max_salary() >= other.get_max_salary()
 
     def __le__(self, other):
         if type(self) is type(other):
-            return self.salary['to'] <= other.salary['to']
+            return self.get_max_salary() <= other.get_max_salary()
 
     def __len__(self):
         return len(self.vacancies_list)
+
+    def get_max_salary(self):
+        return max(self.salary['from'], self.salary['to'])
 
     @classmethod
     def cast_vacancies_to_list(cls, vacancy):
