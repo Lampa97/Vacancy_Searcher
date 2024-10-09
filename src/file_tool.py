@@ -1,6 +1,7 @@
 from src.base_classes import BaseFileTool
-from src.vacancy import Vacancy
 import json
+
+from src.vacancy import Vacancy
 
 
 class JsonFileTool(BaseFileTool):
@@ -8,21 +9,23 @@ class JsonFileTool(BaseFileTool):
 
     filename: str
 
-
     def __init__(self, filename):
         """Filename must be given without an extension. Extension '.json' will be added during initialization"""
-        self.filename = filename
-        self.path = f"../data/{self.filename}.json"
+        self.__filename = filename
+        self.path = f"../data/{self.__filename}.json"
 
     def save_all_to_file(self, vacancy_list: list):
         """Method rewriting or creating a new file with given vacancies"""
+        ready_to_save = []
+        for vacancy in vacancy_list:
+            ready_to_save.append(vacancy.vacancy_info)
         with open(self.path, 'w', encoding='utf-8') as json_file:
-            json.dump(vacancy_list, json_file, indent=4, ensure_ascii=False)
+            json.dump(ready_to_save, json_file, indent=4, ensure_ascii=False)
 
     def save_one_to_file(self, vacancy: Vacancy):
         """Method adding one vacancy to the file"""
         with open(self.path, 'a', encoding='utf-8') as json_file:
-            json.dump(vacancy, json_file, indent=4, ensure_ascii=False)
+            json.dump(vacancy.vacancy_info, json_file, indent=4, ensure_ascii=False)
 
 
     def remove_from_file(self, numbers: list):
@@ -31,5 +34,5 @@ class JsonFileTool(BaseFileTool):
             vacancies = json.load(json_file)
             for number in sorted(numbers, reverse=True):
                 vacancies.pop(number)
-        with open (self.path, 'w', encoding='utf-8') as json_file:
+        with open(self.path, 'w', encoding='utf-8') as json_file:
             json.dump(vacancies, json_file, indent=4, ensure_ascii=False)
