@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 
+
 class BaseVacancyParser(ABC):
     """Abstract class for vacancy parsers"""
 
@@ -11,6 +12,7 @@ class BaseVacancyParser(ABC):
     def squeeze(self):
         pass
 
+
 class BaseFileTool(ABC):
     """Abstract class for working with files"""
 
@@ -19,9 +21,9 @@ class BaseFileTool(ABC):
         pass
 
     @abstractmethod
-    def save_one_to_file(self, vacancy):
+    def save_chosen_to_file(self, vacancy_list, index_numbers):
         pass
 
     @abstractmethod
-    def remove_from_file(self, number):
+    def remove_from_file(self, index_numbers):
         pass

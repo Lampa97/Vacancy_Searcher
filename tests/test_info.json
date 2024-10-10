@@ -1,0 +1,12 @@
+[
+    {
+        "name": "C++ developer",
+        "salary": {
+            "from": 300,
+            "to": 400,
+            "currency": "RUR"
+        },
+        "url": "test_url",
+        "requirement": null
+    }
+]
