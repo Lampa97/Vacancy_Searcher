@@ -1,5 +1,5 @@
 class Vacancy:
-    """Class for creating a vacancy object"""
+    """Class for creating a vacancy object. If salary attribute missing one of the ranges - setting it to 0"""
 
     vacancy_info: dict
 
