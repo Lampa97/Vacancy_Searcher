@@ -23,6 +23,7 @@ If vacancy was added by mistake it's still possible to delete it.
 #### Reminder
 * If user left salary range empty - default salary range will be set (0-100000).
 * Please strictly follow instruction given by program to get desired results.
+* File will be saved to *data* directory. Please don't remove this folder.
 
 
 
