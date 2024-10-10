@@ -5,7 +5,7 @@ class BaseVacancyParser(ABC):
     """Abstract class for vacancy parsers"""
 
     @abstractmethod
-    def fetch_vacancies(self, keyword):
+    def fetch_vacancies(self, keyword, pages_amount):
         pass
 
     @abstractmethod

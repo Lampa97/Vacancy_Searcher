@@ -30,9 +30,10 @@ class HeadHunterAPI(BaseVacancyParser):
     def params(self):
         return self.__params
 
-    def fetch_vacancies(self, keyword: str) -> None:
+    def fetch_vacancies(self, keyword: str, pages_amount: int) -> None:
+        """Fetching vacancies from HeadHunter"""
         self.__params["text"] = keyword
-        while self.__params["page"] != 20:
+        while self.__params["page"] != abs(pages_amount):
             api_logger.info(f"Parsing page number: {self.__params['page']}")
             response = requests.get(self.__url, headers=self.__headers, params=self.__params)
             if response.status_code == 200:

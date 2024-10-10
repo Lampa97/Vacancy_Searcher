@@ -18,7 +18,7 @@ def test_fetch_vacancies():
     mock_response.json.return_value = {"items": ["test"]}
 
     with patch("requests.get", return_value=mock_response):
-        hh_fetcher.fetch_vacancies("python")
+        hh_fetcher.fetch_vacancies("python", 20)
         assert len(hh_fetcher.vacancies) == 20
 
 
@@ -28,7 +28,7 @@ def test_fetch_vacancies_failed():
     mock_response.status_code = 404
 
     with patch("requests.get", return_value=mock_response):
-        hh_fetcher.fetch_vacancies("python")
+        hh_fetcher.fetch_vacancies("python", 5)
         assert hh_fetcher.vacancies == []
 
 

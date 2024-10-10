@@ -26,6 +26,7 @@ def range_vacancies_by_salary(vacancies: list, salary_range: str) -> list:
 
 
 def get_top_n_vacancies(vacancies: list, top_n: int) -> list:
+    """Returning first n vacancies in the list"""
     if len(vacancies) > top_n:
         return vacancies[:top_n]
     else:
@@ -33,10 +34,12 @@ def get_top_n_vacancies(vacancies: list, top_n: int) -> list:
 
 
 def sort_vacancies(vacancies: list) -> list:
+    """Sorting vacancies by salary in descending order"""
     return sorted(vacancies, reverse=True)
 
 
 def print_vacancies(vacancies: list) -> None:
+    """Printing info about vacancies in more readable format"""
     for index, vacancy in enumerate(vacancies, 1):
         if vacancy.salary["from"] == 0:
             salary = f"До {vacancy.salary['to']} руб."
