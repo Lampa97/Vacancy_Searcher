@@ -1,22 +1,12 @@
 [
     {
-        "name": "Python developer",
+        "name": "C++ developer",
         "salary": {
-            "from": 100,
-            "to": 300,
+            "from": 300,
+            "to": 400,
             "currency": "RUR"
         },
         "url": "test_url",
-        "requirement": "SQL"
-    },
-    {
-        "name": "DevOps",
-        "salary": {
-            "from": 100,
-            "to": 0,
-            "currency": "RUR"
-        },
-        "url": "test_url",
-        "requirement": "Management skills"
+        "requirement": null
     }
 ]

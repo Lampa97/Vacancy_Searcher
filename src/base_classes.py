@@ -21,5 +21,9 @@ class BaseFileTool(ABC):
         pass
 
     @abstractmethod
-    def remove_from_file(self, number):
+    def save_chosen_to_file(self, vacancy_list, index_numbers):
+        pass
+
+    @abstractmethod
+    def remove_from_file(self, index_numbers):
         pass

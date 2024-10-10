@@ -3,7 +3,7 @@ import requests
 from src.base_classes import BaseVacancyParser
 from src.file_tool import JsonFileTool
 from src.logger import logger_setup
-from src.utils import filter_by_description, get_top_n_vacancies, range_vacancies_by_salary
+from src.utils import filter_by_description, get_top_n_vacancies, range_vacancies_by_salary, print_vacancies
 from src.vacancy import Vacancy
 
 api_logger = logger_setup()
@@ -78,9 +78,9 @@ class HeadHunterAPI(BaseVacancyParser):
 # for vacancy in my:
 #     new_vac = Vacancy(vacancy)
 #     Vacancy.cast_vacancies_to_list(new_vac)
-
+#
 # print(Vacancy.vacancies_list)
-
+#
 # lll = Vacancy.vacancies_list
 #
 # ppp = filter_by_description(lll, ['Android', 'Java'])
@@ -95,13 +95,16 @@ class HeadHunterAPI(BaseVacancyParser):
 # ggg = get_top_n_vacancies(fff, 5)
 #
 # print('----------')
+#
+#
+# print_vacancies(ggg)
 
 # for i in ggg:
 #     print(i.vacancy_info)
 #
 # for i in lll:
 #     print(i.salary)
-
+#
 # for i in ooo:
 #     print(i.salary)
 #

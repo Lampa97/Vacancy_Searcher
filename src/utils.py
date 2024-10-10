@@ -38,4 +38,14 @@ def sort_vacancies(vacancies: list) -> list:
 
 def print_vacancies(vacancies: list) -> None:
     for index, vacancy in enumerate(vacancies, 1):
-        print(f'Vacancy #{index}: {vacancy.vacancy_info}\n')
+        if vacancy.salary['from'] == 0:
+            salary = f'До {vacancy.salary['to']} руб.'
+        elif vacancy.salary['to'] == 0:
+            salary = f'От {vacancy.salary['from']} руб.'
+        else:
+            salary = f"От {vacancy.salary['from']} до {vacancy.salary['to']} руб."
+        print(f"""Vacancy #{index}:
+        name: {vacancy.name}
+        salary: {salary}
+        requirement: {vacancy.requirement}
+        url: {vacancy.url}""")
