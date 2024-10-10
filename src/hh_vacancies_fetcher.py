@@ -17,10 +17,22 @@ class HeadHunterAPI(BaseVacancyParser):
         self.__params = {'text': '', 'page': 0, 'per_page': 100}
         self.vacancies = []
 
+    @property
+    def url(self):
+        return self.__url
+
+    @property
+    def headers(self):
+        return self.__headers
+
+    @property
+    def params(self):
+        return self.__params
+
 
     def fetch_vacancies(self, keyword: str):
         self.__params['text'] = keyword
-        while self.__params['page'] != 5:
+        while self.__params['page'] != 20:
             api_logger.info(f'Parsing page number: {self.__params['page']}')
             response = requests.get(self.__url, headers=self.__headers, params=self.__params)
             if response.status_code == 200:
@@ -58,7 +70,7 @@ class HeadHunterAPI(BaseVacancyParser):
 #
 # hh.fetch_vacancies('Java')
 #
-# print(hh.vacancies)
+# print(hh.vacancies[0])
 #
 #
 # my = hh.squeeze()
