@@ -1,10 +1,7 @@
 import requests
 
 from src.base_classes import BaseVacancyParser
-from src.file_tool import JsonFileTool
 from src.logger import logger_setup
-from src.utils import filter_by_description, get_top_n_vacancies, range_vacancies_by_salary, print_vacancies
-from src.vacancy import Vacancy
 
 api_logger = logger_setup()
 
@@ -30,9 +27,10 @@ class HeadHunterAPI(BaseVacancyParser):
     def params(self):
         return self.__params
 
-    def fetch_vacancies(self, keyword: str) -> None:
+    def fetch_vacancies(self, keyword: str, pages_amount: int) -> None:
+        """Fetching vacancies from HeadHunter"""
         self.__params["text"] = keyword
-        while self.__params["page"] != 20:
+        while self.__params["page"] != abs(pages_amount):
             api_logger.info(f"Parsing page number: {self.__params['page']}")
             response = requests.get(self.__url, headers=self.__headers, params=self.__params)
             if response.status_code == 200:
@@ -57,66 +55,3 @@ class HeadHunterAPI(BaseVacancyParser):
             except AttributeError:
                 continue
         return squeezed_info
-
-
-# my_json = JsonFileTool('filer')
-#
-#
-# hh = HeadHunterAPI()
-#
-# hh.fetch_vacancies('Java')
-#
-# print(hh.vacancies[0])
-#
-#
-# my = hh.squeeze()
-#
-# print(my)
-#
-#
-#
-# for vacancy in my:
-#     new_vac = Vacancy(vacancy)
-#     Vacancy.cast_vacancies_to_list(new_vac)
-#
-# print(Vacancy.vacancies_list)
-#
-# lll = Vacancy.vacancies_list
-#
-# ppp = filter_by_description(lll, ['Android', 'Java'])
-#
-# for i in ppp:
-#     print(i.vacancy_info)
-#
-# ooo = range_vacancies_by_salary(ppp, '50000-100000')
-#
-# fff = sorted(ooo, reverse=True)
-#
-# ggg = get_top_n_vacancies(fff, 5)
-#
-# print('----------')
-#
-#
-# print_vacancies(ggg)
-
-# for i in ggg:
-#     print(i.vacancy_info)
-#
-# for i in lll:
-#     print(i.salary)
-#
-# for i in ooo:
-#     print(i.salary)
-#
-#
-# print(lll[2] >= lll[1])
-# print(lll[2])
-# print(lll[1])
-#
-# sss = sorted(lll, reverse=True)
-#
-# print(lll[2].vacancy_info)
-#
-# ff = JsonFileTool('files')
-#
-# ff.save_all_to_file(sss)

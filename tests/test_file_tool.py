@@ -28,3 +28,21 @@ def test_remove_from_file():
     json_saver.path = "tests/test_info.json"
 
     json_saver.remove_from_file([1])
+
+def test_get_data_from_file():
+    json_saver = JsonFileTool("test_info")
+    json_saver.path = "tests/test_info.json"
+
+    content = json_saver.get_data_from_file()
+    assert content == [{
+        "name": "DevOps",
+        "salary": {"from": 100, "to": 0, "currency": "RUR"},
+        "url": "test_url",
+        "requirement": "Management skills",
+    }]
+
+def test_remove_from_file_index_error():
+    json_saver = JsonFileTool("test_info")
+    json_saver.path = "tests/test_info.json"
+
+    json_saver.remove_from_file([3])
