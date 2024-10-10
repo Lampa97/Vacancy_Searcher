@@ -34,3 +34,8 @@ def get_top_n_vacancies(vacancies: list, top_n: int) -> list:
 
 def sort_vacancies(vacancies: list) -> list:
     return sorted(vacancies, reverse=True)
+
+
+def print_vacancies(vacancies: list) -> None:
+    for index, vacancy in enumerate(vacancies, 1):
+        print(f'Vacancy #{index}: {vacancy.vacancy_info}\n')
