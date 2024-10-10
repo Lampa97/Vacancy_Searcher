@@ -29,7 +29,7 @@ class JsonFileTool(BaseFileTool):
         """Method rewriting or creating a new file with given vacancies"""
         ready_to_save = []
         for number in sorted(index_numbers, reverse=True):
-            ready_to_save.append(vacancy_list[number].vacancy_info)
+            ready_to_save.append(vacancy_list[number-1].vacancy_info)
         with open(self.path, "w", encoding="utf-8") as json_file:
             json.dump(ready_to_save, json_file, indent=4, ensure_ascii=False)
 
@@ -38,6 +38,9 @@ class JsonFileTool(BaseFileTool):
         with open(self.path, "r", encoding="utf-8") as json_file:
             vacancies = json.load(json_file)
             for number in sorted(index_numbers, reverse=True):
-                vacancies.pop(number)
+                try:
+                    vacancies.pop(number-1)
+                except IndexError:
+                    continue
         with open(self.path, "w", encoding="utf-8") as json_file:
             json.dump(vacancies, json_file, indent=4, ensure_ascii=False)
