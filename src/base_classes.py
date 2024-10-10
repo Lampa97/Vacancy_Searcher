@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 
+
 class BaseVacancyParser(ABC):
     """Abstract class for vacancy parsers"""
 
@@ -10,6 +11,7 @@ class BaseVacancyParser(ABC):
     @abstractmethod
     def squeeze(self):
         pass
+
 
 class BaseFileTool(ABC):
     """Abstract class for working with files"""
