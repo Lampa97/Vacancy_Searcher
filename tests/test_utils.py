@@ -1,5 +1,10 @@
-from src.utils import filter_by_description, get_top_n_vacancies, range_vacancies_by_salary, sort_vacancies, \
-    print_vacancies
+from src.utils import (
+    filter_by_description,
+    get_top_n_vacancies,
+    range_vacancies_by_salary,
+    sort_vacancies,
+    print_vacancies,
+)
 from src.vacancy import Vacancy
 
 
@@ -38,7 +43,9 @@ def test_print_vacancies(capsys, vacancy_1, vacancy_2, vacancy_3):
     test_list = [Vacancy(vacancy_1), Vacancy(vacancy_2), Vacancy(vacancy_3)]
     print_vacancies(test_list)
     printed_vacancies = capsys.readouterr()
-    assert printed_vacancies.out.strip() == """Vacancy #1:
+    assert (
+        printed_vacancies.out.strip()
+        == """Vacancy #1:
         name: Python developer
         salary: От 100 до 300 руб.
         requirement: SQL
@@ -53,3 +60,4 @@ Vacancy #3:
         salary: От 100 руб.
         requirement: Management skills
         url: test_url"""
+    )

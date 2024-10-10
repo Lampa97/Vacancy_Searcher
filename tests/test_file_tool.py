@@ -22,6 +22,7 @@ def test_save_chosen_to_file(vacancies_list):
 
     json_saver.save_chosen_to_file(vacancies_list, [3, 4])
 
+
 def test_remove_from_file():
     json_saver = JsonFileTool("test_info")
     json_saver.path = "tests/test_info.json"
