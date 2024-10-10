@@ -8,7 +8,7 @@ class JsonFileTool(BaseFileTool):
 
     filename: str
 
-    def __init__(self, filename):
+    def __init__(self, filename="vacancies"):
         """Filename must be given without an extension. Extension '.json' will be added during initialization"""
         self.__filename = filename
         self.path = f"data/{self.__filename}.json"
@@ -16,6 +16,11 @@ class JsonFileTool(BaseFileTool):
     @property
     def filename(self):
         return self.__filename
+
+    def get_data_from_file(self) -> list | dict:
+        with open(self.path, "r", encoding="utf-8") as json_file:
+            content = json.load(json_file)
+            return content
 
     def save_all_to_file(self, vacancy_list: list) -> None:
         """Method rewriting or creating a new file with given vacancies"""

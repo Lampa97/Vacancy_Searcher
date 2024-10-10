@@ -5,8 +5,13 @@ from time import sleep
 from src.file_tool import JsonFileTool
 from src.hh_vacancies_fetcher import HeadHunterAPI
 from src.logger import logger_setup
-from src.utils import (filter_by_description, get_top_n_vacancies, print_vacancies, range_vacancies_by_salary,
-                       sort_vacancies)
+from src.utils import (
+    filter_by_description,
+    get_top_n_vacancies,
+    print_vacancies,
+    range_vacancies_by_salary,
+    sort_vacancies,
+)
 from src.vacancy import Vacancy
 
 main_logger = logger_setup()
@@ -32,6 +37,7 @@ def user_setup() -> dict:
     )
     if len(re.split("[,;-]", salary_range)) != 2 or not all(x.isdigit() for x in re.split("[,;-]", salary_range)):
         print("Invalid format. Salary range is set to default: 0-1000000\n")
+        sleep(2)
         salary_range = "0-1000000"
 
     settings_info = {
@@ -62,8 +68,11 @@ def working_with_vacancies(settings: dict) -> list:
 
 
 def work_with_file(vacancies: list) -> None:
-    filename_choice = input("Please type a name for json file: \n")
-    json_handler = JsonFileTool(filename_choice)
+    filename_choice = input("Please type a name for json file (or leave empty for default name): \n")
+    if filename_choice:
+        json_handler = JsonFileTool(filename_choice)
+    else:
+        json_handler = JsonFileTool()
     method_choice = input(
         "If you want to save all vacancies, type 'all'. If you want to choose specific vacancies, type 'choose': \n"
     )

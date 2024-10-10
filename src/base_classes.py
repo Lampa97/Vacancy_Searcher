@@ -17,6 +17,10 @@ class BaseFileTool(ABC):
     """Abstract class for working with files"""
 
     @abstractmethod
+    def get_data_from_file(self):
+        pass
+
+    @abstractmethod
     def save_all_to_file(self, vacancy_list):
         pass
 
