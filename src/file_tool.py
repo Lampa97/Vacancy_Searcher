@@ -29,17 +29,17 @@ class JsonFileTool(BaseFileTool):
         """Method rewriting or creating a new file with given vacancies"""
         ready_to_save = []
         for number in sorted(index_numbers, reverse=True):
-            ready_to_save.append(vacancy_list[number-1].vacancy_info)
+            ready_to_save.append(vacancy_list[number - 1].vacancy_info)
         with open(self.path, "w", encoding="utf-8") as json_file:
             json.dump(ready_to_save, json_file, indent=4, ensure_ascii=False)
 
     def remove_from_file(self, index_numbers: list) -> None:
-        """method removing a vacancy by a given list of index numbers"""
+        """Method removing a vacancy by a given list of index numbers"""
         with open(self.path, "r", encoding="utf-8") as json_file:
             vacancies = json.load(json_file)
             for number in sorted(index_numbers, reverse=True):
                 try:
-                    vacancies.pop(number-1)
+                    vacancies.pop(number - 1)
                 except IndexError:
                     continue
         with open(self.path, "w", encoding="utf-8") as json_file:

@@ -39,21 +39,26 @@ class Vacancy:
         return self.__salary
 
     def __len__(self):
+        """Length of vacancies added to class attribute 'vacancies_list'"""
         return len(self.vacancies_list)
 
     def __gt__(self, other):
+        """'Greater than' method comparing salaries of  two vacancies"""
         if type(self) is type(other):
             return self.get_max_salary() > other.get_max_salary()
 
     def __lt__(self, other):
+        """'Lower than' method comparing salaries of  two vacancies"""
         if type(self) is type(other):
             return self.get_max_salary() < other.get_max_salary()
 
     def __ge__(self, other):
+        """'Greater than or equal' method comparing salaries of  two vacancies"""
         if type(self) is type(other):
             return self.get_max_salary() >= other.get_max_salary()
 
     def __le__(self, other):
+        """'Lower than or equal' method comparing salaries of  two vacancies"""
         if type(self) is type(other):
             return self.get_max_salary() <= other.get_max_salary()
 

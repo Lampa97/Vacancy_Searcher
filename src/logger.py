@@ -2,6 +2,7 @@ import logging
 
 
 def logger_setup() -> logging.Logger:
+    """Logger setter"""
     my_logger = logging.getLogger(__name__)
     console_handler = logging.StreamHandler()
     file_formatter = logging.Formatter("%(asctime)s - %(filename)s - %(levelname)s - %(message)s")
