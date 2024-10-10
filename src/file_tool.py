@@ -12,7 +12,11 @@ class JsonFileTool(BaseFileTool):
     def __init__(self, filename):
         """Filename must be given without an extension. Extension '.json' will be added during initialization"""
         self.__filename = filename
-        self.path = f"../data/{self.__filename}.json"
+        self.path = f"data/{self.__filename}.json"
+
+    @property
+    def filename(self):
+        return self.__filename
 
     def save_all_to_file(self, vacancy_list: list):
         """Method rewriting or creating a new file with given vacancies"""
@@ -21,12 +25,6 @@ class JsonFileTool(BaseFileTool):
             ready_to_save.append(vacancy.vacancy_info)
         with open(self.path, 'w', encoding='utf-8') as json_file:
             json.dump(ready_to_save, json_file, indent=4, ensure_ascii=False)
-
-    def save_one_to_file(self, vacancy: Vacancy):
-        """Method adding one vacancy to the file"""
-        with open(self.path, 'a', encoding='utf-8') as json_file:
-            json.dump(vacancy.vacancy_info, json_file, indent=4, ensure_ascii=False)
-
 
     def remove_from_file(self, numbers: list):
         """method removing a vacancy by a given list of index numbers"""

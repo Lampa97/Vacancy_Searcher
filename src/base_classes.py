@@ -19,9 +19,5 @@ class BaseFileTool(ABC):
         pass
 
     @abstractmethod
-    def save_one_to_file(self, vacancy):
-        pass
-
-    @abstractmethod
     def remove_from_file(self, number):
         pass
