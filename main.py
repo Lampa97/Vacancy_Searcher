@@ -92,7 +92,7 @@ def work_with_file(vacancies: list) -> None:
         json_handler.save_all_to_file(vacancies)
 
     delete_choice = input("Do you like to delete some vacancies from file? [y/n]: \n")
-    if delete_choice in ["y", "yes", "yeah"]:
+    if delete_choice.lower() in ["y", "yes", "yeah"]:
         with open(json_handler.path, "r", encoding="utf-8") as json_file:
             vacancies = json.load(json_file)
         for index, vacancy in enumerate(vacancies, 1):
@@ -123,7 +123,7 @@ def main_interaction() -> None:
 
         print_vacancies(user_vacancies)
         file_choice = input("Do you want to save vacancies to file? [y/n]: \n")
-        if file_choice in ["y", "yes", "yeah"]:
+        if file_choice.lower() in ["y", "yes", "yeah"]:
             work_with_file(user_vacancies)
         running_app = False
 
